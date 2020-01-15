@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Users Assignment</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<style type="text/css">
+		a{
+			text-decoration: underline;
+			color: orange;
+		}
+	</style>
+</head>
+<body>
+	<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">ID#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Created At</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{% for one_friend in all_friends %}
+    <tr>
+      <th scope="row">{{one_friend['user_id']}}</th>
+      <td>{{one_friend['first_name']}} {{one_friend['last_name']}}</td>
+      <td>{{one_friend['email']}}</td>
+      <td>{{one_friend['created_at']}}</td>
+      <td> <a href="/all_users/{{one_friend['user_id']}}">Show</a> <a href="/all_users/{{one_friend['user_id']}}/edit">Edit</a> <a href="/all_users/{{one_friend['user_id']}}/destroy">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<a href="/new_page">Add a New User</a>
+</body>
+</html>

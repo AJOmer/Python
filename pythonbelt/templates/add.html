@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add A Job</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		h2{
+			display: inline-block;
+		}
+		.logout{
+			display: inline-block;
+			margin-left: 60%;
+		}
+		.form{
+			border: 2px solid black;
+			height: 65%;
+			width: 50%; 
+			padding: 20px;
+		}
+		.bottom{
+			display: inline-block;
+		}
+		.bot{
+			display: inline-block;
+		}
+		.head{
+			border-bottom: 2px solid black;
+		}
+	</style>
+</head>
+<body>
+	<div class="head">
+	<h2>Hello {{session['first']}}! Create a new job!</h2>
+	<a class="logout" href="/logout">Logout</a>
+	{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+        	{% endfor %}
+    	{% endif %}
+	{% endwith %}
+	</div>
+	<div class="form">
+	<form action="/new_job" method='POST'>
+	<p>Title: <input type="text" name="title"></p>
+	<p>Description: <input type="text" name="desc"></p>
+	<p>Location : <input type="text" name="locate"></p>
+	<input type="Submit" class="bottom" name="add_the_book">
+<a class="bot" href="/dashboard">Cancel</a>
+	</form>
+	</div>
+</body>
+</html>

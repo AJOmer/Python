@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dashboard</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<style type="text/css">
+		h1{
+			display: inline-block;
+		}
+		.logout{
+			display: inline-block;
+			margin-left: 70%;
+		}
+		.header{
+			border-bottom: 2px solid black;
+		}
+		a{
+			text-decoration: underline;
+		}
+		.point{
+			text-decoration: underline;
+/*			border-bottom: 3px solid black;*/
+		}
+	</style>
+</head>
+<body>
+	<div class="header">
+		<h1>Hello, {{session['first']}}!</h1>
+		<a class="logout" href="/logout">Logout</a>
+	</div>
+	<h3>Everyone's Jobs:</h3>
+	<table class="table table-striped">
+  <thead>
+    <tr class="point">
+      <th scope="col">Job</th>
+      <th scope="col">Location</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{% for job in alljobs %}
+    <tr>
+      <th scope="row">{{job['job_name']}}</th>
+      <td>{{job['location']}}</td>
+      <td><a href="/dashboard/{{job['job_id']}}/view">View</a> | 
+      {% if session['userid'] == job['uploaded_by_id'] %} <a href="dashboard/{{job['job_id']}}/destroy">Remove</a> | <a href="dashboard/{{job['job_id']}}/edit">Edit</a></td>
+    </tr>
+  </tbody>
+  	{% endif %}
+  {% endfor %}
+</table>
+	<a href="/add_new_job">New Job!</a>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Private Wall</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<style type="text/css">
+    h1{
+        display: inline-block;
+    }
+    .mess1{
+        display: inline-block;
+        margin-left: 550px;
+    }
+    a{
+        display: inline-block;
+        margin-left: 20px;
+    }
+    .top{
+        border-bottom: 2px solid black;
+    }
+    textarea{
+        height: 100px;
+        width: 400px;
+        display: inline-block;
+    }
+    .bulk{
+        width: 50%;
+        display: inline-block;
+    }
+    .bottom{
+        width: 50%;
+        display: inline-block;
+    }
+    h3{
+        text-decoration: underline;
+    }
+</style>
+<body>
+    <div class="top">
+        <h1>Coding Dojo Wall</h1>
+        <h2 class="mess1">Welcome, {{session['first']}} {{session['last']}}!</h2>
+        <a href="/logout">Logout</a>
+    </div>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    <div class="bulk">
+        <h3>Post a Message</h3>
+        {% for one_send in sending %}
+           <form action="/create_message" name="message1" method='POST' class="midright">
+            <h4>{{ one_send['first_name']}}</h4>
+            <textarea name="message1"></textarea>
+            <input type="hidden" name="messsend" value="{{one_send['user_id']}}">
+            <input type="submit" name="messagecreate" value="POST">
+           </form>
+           {% endfor %}
+    </div>
+    <div class="bottom">
+        <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Message From</th>
+      <th scope="col">Message</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for abuild in buildwall %}
+    <tr>
+      <th scope="row">{{abuild['receive_from']}}</th>
+      <td>{{abuild['text']}}</td>
+      <td> <a href="/destroy/{{abuild['message_id']}}">Delete</a> </td>
+    </tr>
+  </tbody>
+  {% endfor %}
+</table>
+    </div>
+</body>
+</html>

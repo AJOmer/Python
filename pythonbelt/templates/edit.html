@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Update Job</title>
+	<style type="text/css">
+		.bulk{
+			border: 2px solid black;
+			padding: 15px;
+		}
+		.date{
+			display: inline-block;
+		}
+		.cancel{
+			display: inline-block;
+			margin-left: 15px;
+		}
+		h1{
+			display: inline-block;
+		}
+		.logout{
+			display: inline-block;
+			margin-left: 51%;
+		}
+	</style>
+</head>
+<body>
+	<h1>Hello {{session['first']}}! Let's edit your job!</h1>
+	<a class="logout" href="/logout">Logout</a>
+	{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+        	{% endfor %}
+    	{% endif %}
+	{% endwith %}
+	<div class="bulk">
+	<form action="/updating/{{job_id}}" method='POST'>
+		<h3>New Title: <input type="text" name="new_title"></h3>
+		<h3>New Description: <input type="text" name="new_desc"></h3>
+		<h3>New Location: <input type="text" name="new_loc"></h3>
+		<input class="date" type="Submit" name="updateit">
+		<a class="cancel" href="/dashboard">Cancel</a>
+	</form>
+	</div>
+</body>
+</html>

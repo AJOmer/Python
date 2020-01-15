@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Update A User</title>
+</head>
+<body>
+	<a href="/">Home</a>
+	<h1>Edit User {{id}}!</h1>
+	<form action="/all_users/{{id}}/update" method='POST'>
+	<p>First Name: <input type="text" name="fname"></p>
+	<p>Last Name: <input type="text" name="lname"></p>
+	<p>Email: <input type="text" name="mail"></p>
+	<input type="submit" name="update">
+</form>
+<a href="/all_users/{{id}}">Show User</a>
+</body>
+</html>

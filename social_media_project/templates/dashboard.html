@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>On-Tyme Dashboard</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style type="text/css">
+    .hourspic{
+      width: 125px;
+      height: 100px;
+      border-radius: 10px;
+    }
+  .clockin{
+    padding: 10px;
+  }
+  .hourstable{
+    overflow: scroll;
+    height: 215px;
+  }
+  .haps{
+    width: 25%;
+    height: 90px;
+  }
+  p{
+    border: 2px solid black;
+    width: 400px;
+    height: 350px;
+  }
+  .leftprofile{
+    border: 2px solid black;
+    display: inline-block;
+    width: 35%;
+    height: 400px;
+  }
+  .rightprofile{
+    border: 2px solid black;
+    width: 35%;
+    height: 400px;
+    display: inline-block;
+    margin-left: 150px;
+  }
+  img{
+    width: 65%;
+    height: 150px;
+    position: relative;
+    margin-top: 30px;
+  }
+/*  .profpic{
+    position: absolute;
+    width: 10%;
+    height: 50px;
+    left: 50px;
+    top: 350px;
+    border: 2px solid black;
+  }*/
+  textarea{
+    margin-top: 10px;
+    margin-left: 50px;
+    width: 280px;
+    height: 150px;
+  }
+  </style>
+</head>
+<body>
+  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5 class="my-0 mr-md-auto font-weight-normal"><img class="haps" src="{{ url_for('static', filename='img/thehaps2.png')}}"></h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a class="p-2 text-dark" href="/dashboard">Dashboard</a>
+    <a class="p-2 text-dark" href="/logout">Logout</a>
+  </nav>
+<div class="dropdown">
+  <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{session['first']}}</button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="/settings">Settings</a>
+    <a class="dropdown-item" href="/logout">Logout</a>
+  </div>
+</div>
+</div>
+<div class=" text-center">
+  <h1 class="display-4">{{session['first']}}'s Crimeline</h1>
+</div>
+<div class="leftprofile">
+<img src="{{ url_for('static', filename='img/dojo.jpg')}}" class="rounded mx-auto d-block" alt="snowflake">
+<!-- <img class="profpic" src="{{ url_for('static', filename='img/user.png')}}" class="rounded" alt="userpic"> -->
+<form action="/create_post" method='POST'>
+<!-- <h4>Post your unpopular opinion here!</h4> -->
+<h6>Post Your unpopular opinion here:</h6>
+<textarea name="message1" placeholder="What's on your mind?"></textarea>
+<input class="" type="Submit" name="postcreate" value="Triggered">
+</form>
+</div>
+<div class="rightprofile">
+
+</div>
+</body>
+</html>

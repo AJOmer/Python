@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Show User</title>
+</head>
+<body>
+	<h1>Welcome User {{friends[0]['user_id']}}</h1>
+	<h3>Full Name: {{friends[0]['first_name']}} {{friends[0['last_name']]}} </h3>
+	<h3>Email: {{friends[0]['email']}}</h3>
+	<h3>Created on: {{friends[0]['created_at']}}</h3>
+	<h3>Last Updated On: {{friends[0]['updated_at']}}</h3>
+	<a href="/all_users/{{id}}/edit">Edit</a> | <a href="/all_users/{{id}}/destroy">Delete</a> | <a href="/">Home</a>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Favorite Books</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style type="text/css">
+    h1{
+      text-align: center;
+      text-decoration: underline;
+      color: black;
+    }
+    p{
+      color: red;
+      font-size: 25px;
+      text-align: center;
+      text-decoration: underline;
+    }
+    .register{
+      display: inline-block;
+      width: 50%;
+/*      border: 2px solid black;*/
+      padding: 15px;
+/*      background-image: url('/static/img/forest.gif');*/
+    }
+    .login{
+      display: inline-block;
+      width: 45%;
+      vertical-align: top;
+      margin-left: 20px;
+/*      border: 2px solid black;*/
+      padding: 30px;
+/*      background-image: url('/static/img/forest.gif');*/
+    }
+    label{
+      text-decoration: underline;
+      color: black;
+    }
+    .welcome{
+      text-decoration: none;
+    }
+    .begin{
+      border: 2px solid black;
+      background-image: url('/static/img/odell.gif');
+    }
+    img{
+      width: 390px;
+      height: 200px;
+      margin-left: 40%;
+    }
+    .about{
+      display: inline-block;
+      margin-left: 55%;
+      margin-top:-230px; 
+/*      border: 2px solid black;*/
+      width: 35%;
+      height: 280px;
+    }
+    .container{
+/*      background-image: url('/static/img/sports.gif');*/
+    }
+  </style>
+</head>
+<body>
+  <div class="begin">
+<!--   <h1 class="welcome">Welcome! Sign in to manage your jobs!</h1> -->
+  <img src="{{ url_for('static', filename='img/thehaps2.png')}}">
+  </div>
+  <div>
+  {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+          {% endfor %}
+      {% endif %}
+  {% endwith %}
+  </div>
+  <div class="container">
+  <div class="register">
+  <form action="/register" method='POST'>
+        <h1>Registration</h1>
+    <div class="form-group">
+      <label for="f_name">First Name</label>
+      <input type="text" class="form-control" name="first" aria-describedby="emailHelp" placeholder="Enter First Name">
+    </div>
+    <div class="form-group">
+      <label for="l_name">Last Name</label>
+      <input type="text" class="form-control" name="last" placeholder="Last Name">
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" class="form-control" name="email" placeholder="example@example.com">
+    </div>
+    <div class="form-group">
+      <label for="pass">Password</label>
+      <input type="password" class="form-control" name="pass" placeholder="set your password">
+    </div>
+    <div class="form-group">
+      <label for="firmpass">Confirm Password</label>
+      <input type="password" class="form-control" name="pass2" placeholder="confirm password">
+    </div>
+    <input type="submit" name="add_user" value="Register">
+  </form>
+  </div>
+  <div class="login">
+      <form action="/login" method='POST'>
+        <h1>Login</h1>
+    <div class="form-group">
+      <label for="f_name">Email Address</label>
+      <input type="text" class="form-control" name="elog" aria-describedby="emailHelp" placeholder="Enter email address">
+    </div>
+    <div class="form-group">
+      <label for="l_name">Password</label>
+      <input type="password" class="form-control" name="plog" placeholder="enter password">
+    </div>
+    <input type="submit" name="login" value="Login">
+  </form>
+  </div>
+  <div class="about">
+    <h2>Welcome to TheHaps! The Social Media site that welcomes the hottest of hot-takes when it comes to sports and the most unpopular opinions of life!<!--  No need for political correctness --></h2>
+  </div>
+  </div>
+</body>
+</html>
