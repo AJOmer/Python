@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Show Favorite Book</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		.top{
+			border-bottom: 2px solid black;
+		}
+	</style>
+</head>
+<body>
+	<div class="top">
+	<h1>Welcome, {{session['first']}} </h1>
+	<a class="logout" href="/logout">Logout</a>	
+	</div>
+	<div class="body">
+		{% for lib in library %}
+		<h2>{{lib['book_title']}}</h2>
+		<h4>{{lib['uploaded_by_id']}}</h4>
+		<h4>Added On: {{lib['created_at']}}</h4>
+		<h4>Last updated on: {{lib['updated_at']}}</h4>
+		<h4>Description: {{lib['about_book']}}</h4>
+		{% endfor %}
+	</div>
+	<a href="/dashboard">Home</a>
+</body>
+</html>

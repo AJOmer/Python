@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User Dashboard</title>
+</head>
+<body>
+	<h1>Welcome, {{session['first']}} </h1>
+    <a class="logout" href="/logout">Logout</a>
+	<div class="addingbook">
+	<h1>Add a Favorite Book</h1>
+		<form action="/add_book" method='POST'>
+			<p>Title: <input type="text" name="title"></p>
+			<p>Description: <input type="text" name="about"></p>
+			<input type="submit" name="add_fav" value="Add">
+		</form>
+	</div>
+	<div class="all_books">
+		<h1>All Books</h1>
+		{% for book in allbooks %}
+			<h2><a href="/dashboard/{{book['book_id']}}/show">{{book['book_title']}}</a></h2>
+			<h5>Added by {{book['first_name']}}</h5>
+			{% if session['userid'] == book['uploaded_by_id'] %}
+			<a href="/dashboard/{{book['book_id']}}/edit">Edit</a>
+			{% endif %}
+		{% endfor %}
+
+	</div>
+</body>
+</html>

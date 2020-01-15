@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Favorite Books</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<style type="text/css">
+		h1{
+			text-align: center;
+			text-decoration: underline;
+		}
+		p{
+			color: red;
+			font-size: 25px;
+			text-align: center;
+			text-decoration: underline;
+		}
+	</style>
+</head>
+<body>
+<!-- 	<div class="container"> -->
+	<div>
+		<h1>Registration</h1>
+	{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+        	{% endfor %}
+    	{% endif %}
+	{% endwith %}
+	</div>
+	<form action="/register" method='POST'>
+  	<div class="form-group">
+    	<label for="f_name">First Name</label>
+    	<input type="text" class="form-control" name="first" aria-describedby="emailHelp" placeholder="Enter First Name">
+  	</div>
+  	<div class="form-group">
+    	<label for="l_name">Last Name</label>
+    	<input type="text" class="form-control" name="last" placeholder="Last Name">
+  	</div>
+    <div class="form-group">
+    	<label for="email">Email</label>
+    	<input type="text" class="form-control" name="email" placeholder="example@example.com">
+  	</div>
+  	<div class="form-group">
+    	<label for="pass">Password</label>
+    	<input type="password" class="form-control" name="pass1" placeholder="set your password">
+  	</div>
+  	<div class="form-group">
+    	<label for="firmpass">Confirm Password</label>
+    	<input type="password" class="form-control" name="pass2" placeholder="confirm password">
+  	</div>
+  	<input type="submit" name="add_user" value="Submit">
+	</form>
+	<form action="/login", method='POST'>
+		<h1>Login</h1>
+  		<div class="row">
+    	<div class="col">
+    		<h3>Email Address:</h3>
+      		<input type="text" class="form-control" name="elog" placeholder="Enter Email">
+    	</div>
+    	<div class="col">
+    		<h3>Password:</h3>
+      		<input type="password" class="form-control" name="plog" placeholder="Enter Password">
+    	</div>
+  		</div>
+    	<input type="submit" name="login" value="Submit">
+	</form>
+<!-- 	</div> -->
+</body>
+</html>

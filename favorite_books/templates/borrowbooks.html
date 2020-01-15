@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User's books</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+	<h1>{{inventory[0]['first_name']}}'s Books</h1>
+	<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Book Title</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{% for invent in inventory %}
+    <tr>
+      <th scope="row">{{invent['book_name']}}</th>
+      <td><a href="/dashboard/{{invent['book_id']}}/borrow">Borrow</a></td>
+  </tbody>
+  	{% endfor %}
+</table>
+<a href="/dashboard">Home</a>
+</body>
+</html>
