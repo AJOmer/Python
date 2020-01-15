@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Info</title>
+</head>
+<body>
+	 {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{message}}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+	<h1>Thank You</h1>
+	{% for one_friend in whole_survey %}
+		{% if (one_friend['name'] + one_friend['comment']) == (the_name + nit_pick) %} 
+		<p>Name: {{one_friend['name']}}</p>
+
+		<p>Location: {{one_friend['location']}}</p>
+		<p>Favorite Language: {{one_friend['language']}}</p>
+		<p>Comment: {{one_friend['comment']}}</p>
+		{% endif %}
+	{% endfor %}
+	<a href="/">Home</a>
+</body>
+</html>

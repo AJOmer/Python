@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Checkerboard</title>
+		<style type="text/css">
+			.col1{
+				background-color: orange;
+				height: 100px;
+				width: 100px;
+				background-color: {{color1}};
+			}
+			.col2{
+				background-color: red;
+				height: 100px;
+				width: 100px;
+				background-color: {{color2}};
+			}
+
+
+		</style>
+	</head>
+	<body>
+		<table>
+		{% for i in range(times): %}
+			<tr>
+				{% for j in range (bars): %}
+					<td class="col1"></td>
+					<td class="col2"></td>
+				<!-- 	<td class="col1"></td>
+					<td class="col2"></td>
+					<td class="col1"></td>
+					<td class="col2"></td>
+					<td class="col1"></td>
+					<td class="col2"></td> -->
+				{% endfor %}
+			</tr>
+			<tr>
+				{% for j in range (bars): %}
+					<td class="col2"></td>
+					<td class="col1"></td>
+<!-- 					<td class="col2"></td>
+					<td class="col1"></td>
+					<td class="col2"></td>
+					<td class="col1"></td>
+					<td class="col2"></td>
+					<td class="col1"></td> -->
+				{% endfor %}
+			</tr>
+		{% endfor %}
+
+		</table>
+	</body>
+</html> 

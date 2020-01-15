@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Playground Assignment</title>
+	<style type="text/css">
+		*{
+			margin: 0 px auto;
+			padding: 0 px auto;
+		}
+		h1{
+			font-size: 35px;
+			text-align: center;
+		}
+		.boxes{
+			text-align: center;
+		}
+		p{
+			margin: 7px;
+			border: 5px solid black;
+			height: 100px;
+			width: 100px;
+			background-color:blue;
+			display: inline-block;
+			background-color: {{background}};
+		}
+
+
+
+	</style>
+</head>
+<body>
+	<div class="container">
+	<h1>Welcome!</h1>
+	<div class="boxes">
+	{% for i in range(0, times) %}
+		<p></p>
+	{% endfor %}
+</div>
+
+</body>
+</html>

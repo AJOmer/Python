@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Dojo Survey</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<form action="/results" method="POST">
+  <div class="form-group">
+    <label for="name1">Name</label>
+    <input type="name" class="form-control" name="name1" placeholder="name@example.com">
+  </div>
+  <div class="form-group">
+    <label for="Select1">Location</label>
+    <select class="form-control" name="Select1">
+      <option>San Jose</option>
+      <option>Burbank</option>
+      <option>Seattle</option>
+      <option>Washington</option>
+      <option>Australia</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="Select2">Favorite Language</label>
+    <select class="form-control" name="Select2">
+      <option>Python</option>
+      <option>Java</option>
+      <option>C#</option>
+      <option>C++</option>
+      <option>HTML/CSS</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="Textarea1">Comment (Optional)</label>
+    <textarea class="form-control" name="textarea1" rows="3"></textarea>
+  </div>
+  <input type="submit" name="create_user" value="Click Here Yo!" >
+</form>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{message}}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+</body>
+</html>
